@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjm4s071x8cxk"]
+[gd_scene load_steps=12 format=3 uid="uid://cjm4s071x8cxk"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/player.gd" id="1_r0gvh"]
 [ext_resource type="Texture2D" uid="uid://d2xsinidul3pi" path="res://Assets/large character template.png" id="2_uk7kc"]
-[ext_resource type="Script" path="res://Assets/Scripts/Camera2D.gd" id="3_skj2d"]
 
 [sub_resource type="Animation" id="Animation_485va"]
 length = 0.001
@@ -134,6 +133,9 @@ size = Vector2(24.4401, 69.5843)
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(2.532, 2)
 script = ExtResource("1_r0gvh")
+SPEED = null
+JUMP_VELOCITY = null
+WALL_PUSHBACK = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
@@ -150,6 +152,3 @@ libraries = {
 position = Vector2(0.394945, 32.719)
 scale = Vector2(0.937262, 0.767961)
 shape = SubResource("RectangleShape2D_gl6dg")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("3_skj2d")
