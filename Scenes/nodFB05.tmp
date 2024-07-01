@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://dvptmjniu6bac"]
+
+[ext_resource type="Texture2D" uid="uid://d2xsinidul3pi" path="res://Assets/large character template.png" id="1_sp0ib"]
+[ext_resource type="Script" path="res://Assets/Scripts/player.gd" id="1_wionk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6dg"]
+size = Vector2(8.69906, 21.9751)
+
+[sub_resource type="Animation" id="Animation_485va"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [33]
+}
+
+[sub_resource type="Animation" id="Animation_j00dj"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35]
+}
+
+[sub_resource type="Animation" id="Animation_c0qq4"]
+resource_name = "run"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [40, 41, 42, 43]
+}
+
+[sub_resource type="Animation" id="Animation_inoxx"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [46, 45, 44]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xcxgr"]
+_data = {
+"RESET": SubResource("Animation_485va"),
+"idle": SubResource("Animation_j00dj"),
+"run": SubResource("Animation_c0qq4"),
+"walk": SubResource("Animation_inoxx")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+scale = Vector2(1.266, 1)
+script = ExtResource("1_wionk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(3, 3)
+texture = ExtResource("1_sp0ib")
+hframes = 48
+frame = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+visible = false
+position = Vector2(0, 11.3238)
+scale = Vector2(0.937262, 0.767961)
+shape = SubResource("RectangleShape2D_gl6dg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_xcxgr")
+}
