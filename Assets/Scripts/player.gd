@@ -18,8 +18,6 @@ func _physics_process(delta):
 		
 	if direction_x and not is_on_wall():
 		
-		Timer.
-		
 		
 		velocity.x = direction_x * SPEED
 		_SP.flip_h = false if (direction_x == 1) else true
